@@ -3,8 +3,46 @@
     padding: 0;
     box-sizing: border-box;
 }
-.presentation{
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 500px;
+
+}
+fieldset{
+    width: 20%;
+    text-align: center;
+    height: 400px;
+    background-color: #E2A092;
+}
+legend{
+    font-weight: bold;
+}
+.presentation {
     display: flex;
     flex-direction: column;
     align-items: center;
-}
+    
+  }
+  .presentation > * {
+    margin: 10px 0; 
+  }
+
+  button {
+    width: 150px; 
+    height: 50px; 
+    background-color: purple;
+    color: white;
+  }
+  label{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  input{
+    font-size: 20px;
+    text-align: center;
+    background-color: grey;
+  }
+  
