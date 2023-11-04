@@ -29,31 +29,34 @@ submit.addEventListener("click",function() {
             
             alert("veuillez remplir les champs")
         }else {
-            if(isNaN(month)){
-                month = strNoAccent(month);
-                console.log("accent : " ,month);
-                month = moisTraduit[month.toLowerCase()];
-                console.log("traduction : " ,month);
+            nbrDAY(month,day);
+                    
+        }
+})
 
+function nbrDAY(month,day){
+    if(isNaN(month)){
+        month = strNoAccent(month);
+        console.log("accent : " ,month);
+        month = moisTraduit[month.toLowerCase()];
+        console.log("traduction : " ,month);
+
+    }
+        recupererDate(day,month);
+            if(dateAnniversaire<date){
+                annees=annees+1;
+                dateAnniversaire=Date.parse(`${month} ," ", ${day}, " ",${annees}`);
+                difference= dateAnniversaire-date;
+                document.querySelector("p").innerHTML = `Nombre de jours avant votre ANNIVERSAIRE : <span style="color: green;">${Math.ceil(difference / 86400000)}</span>`; 
             }
-                recupererDate(day,month);
-                    if(dateAnniversaire<date){
-                        annees=annees+1;
-                        dateAnniversaire=Date.parse(`${month} ," ", ${day}, " ",${annees}`);
-                        difference= dateAnniversaire-date;
-                        document.querySelector("p").innerHTML = `Nombre de jours avant votre ANNIVERSAIRE : <span style="color: green;">${Math.ceil(difference / 86400000)}</span>`; 
-                    }
-                    
-                    else if(dateAnniversaire>date){
-                        dateAnniversaire=Date.parse(`${month} ," ", ${day}, " ",${annee}`);
-                        difference= dateAnniversaire-date;
-                        document.querySelector("p").innerHTML = `Nombre de jours avant votre ANNIVERSAIRE : <span style="color: green;">${Math.ceil(difference / 86400000)}</span>`; 
+            
+            else if(dateAnniversaire>date){
+                dateAnniversaire=Date.parse(`${month} ," ", ${day}, " ",${annee}`);
+                difference= dateAnniversaire-date;
+                document.querySelector("p").innerHTML = `Nombre de jours avant votre ANNIVERSAIRE : <span style="color: green;">${Math.ceil(difference / 86400000)}</span>`; 
 
-                    }else{document.querySelector("p").innerText="BON ANNIVERSAIRE";}
-                    
-                    }
-    })
-
+            }else{document.querySelector("p").innerText="BON ANNIVERSAIRE";}
+}
 
 function recupererDate(day,month) {
     const dates = new Date();
@@ -88,4 +91,4 @@ function strNoAccent(month) {
       n += t[c] ? t[c] : c;
     }
     return n;
-  }
+}
